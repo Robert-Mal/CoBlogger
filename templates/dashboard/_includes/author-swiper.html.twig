@@ -1,0 +1,40 @@
+{% if app.user %}
+    <div class="flex flex-col gap-4 w-full">
+        <p class="text-gray-400 uppercase">Favourite author</p>
+        <div class="swiper relative flex items-center overflow-hidden px-5">
+            <div class="swiper-wrapper flex">
+                {% for follower in followers %}
+                    <div class="swiper-slide">
+                        <a href="{{ path('app_user', {id: follower.id}) }}" class="flex items-center justify-center h-16 w-16 rounded-full shadow-md overflow-hidden">
+                            {% if follower.avatarPath %}
+                                <img src="{{ asset(follower.avatarPath) }}" alt="Avatar">
+                            {% else %}
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1"
+                                     stroke="currentColor" class="w-24 h-24">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                          d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                </svg>
+                            {% endif %}
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="swiper-button-prev absolute left-0 flex justify-center items-center h-8 w-8 rounded-full shadow bg-white">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
+                     stroke="currentColor"
+                     class="w-4 h-4">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                          d="M15.75 19.5L8.25 12l7.5-7.5"/>
+                </svg>
+            </div>
+            <div class="swiper-button-next absolute right-0 flex justify-center items-center h-8 w-8 rounded-full shadow bg-white">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
+                     stroke="currentColor"
+                     class="w-4 h-4">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"/>
+                </svg>
+            </div>
+        </div>
+    </div>
+    <hr class="block w-full h-[1px] bg-gray-300"/>
+{% endif %}

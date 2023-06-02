@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Update Avatar{% endblock %}
+
+{% block body %}
+    {% include '_shared/_includes/navbar.html.twig' %}
+    <div class="flex flex-col gap-5 mx-24 pt-10 font-poppins">
+        <p class="text-4xl font-semibold">Update Avatar</p>
+        {{ form_start(form) }}
+        <div class="flex flex-col">
+            {{ form_row(form.avatarPath, {
+                'row_attr': {
+                    'class': 'flex flex-col gap-2'
+                },
+                'label_attr': {
+                    'class': 'text-royal-blue'
+                },
+                'attr': {
+                    'class': 'file-upload rounded px-3 py-2 mb-5'
+                }
+            }) }}
+            <div class="image-container hidden">
+                <div class="flex flex-col items-center">
+                    <div class="w-48 h-48">
+                        <img class="image-preview" src="" alt=""/>
+                    </div>
+                    <button id="removeImage" type="button" class="w-min px-3 py-2 rounded shadow bg-red-500 text-white">
+                        Remove
+                    </button>
+                </div>
+            </div>
+        </div>
+        <span class="w-full h-[1px] bg-gray-300"></span>
+        <div class="flex justify-end">
+            {{ form_row(form.update, {
+                'row_attr': {
+                    'class': 'flex flex-col gap-2'
+                },
+                'attr': {
+                    'class': 'w-min px-3 py-2 mb-5 rounded bg-royal-blue text-white'
+                }
+            }) }}
+        </div>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

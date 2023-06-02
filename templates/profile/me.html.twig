@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}My Profile{% endblock %}
+
+{% block body %}
+    {% include "_shared/_includes/navbar.html.twig" %}
+    <div class="flex flex-col gap-10 px-24 pt-10 font-poppins">
+        <div class="flex items-center gap-5">
+            <div class="relative w-24 h-24">
+                {% if app.user.avatarPath %}
+                    <div class="w-full h-full rounded-full shadow overflow-hidden">
+                        <img src="{{ asset(app.user.avatarPath) }}" alt="Avatar">
+                    </div>
+                {% else %}
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1"
+                         stroke="currentColor" class="w-24 h-24">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                              d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z"/>
+                    </svg>
+                {% endif %}
+                <a href="{{ path('app_update_avatar') }}"
+                   class="absolute right-0 bottom-0 p-1 rounded-full shadow bg-white duration-150 hover:bg-gray-100">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                         stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                              d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"/>
+                    </svg>
+                </a>
+            </div>
+            <div>
+                <div class="flex items-center gap-2">
+                    <p class="text-2xl font-bold">@{{ app.user.username }}</p>
+                    <a href="">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                             stroke="currentColor" class="w-5 h-5">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                  d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"/>
+                        </svg>
+                    </a>
+                </div>
+                <p class="text-lg font-semibold">{{ app.user.email }}</p>
+            </div>
+        </div>
+        <div>
+            {% include 'dashboard/_includes/post-swiper.html.twig' with {'section_title': 'posts', 'posts': posts} %}
+        </div>
+    </div>
+{% endblock %}

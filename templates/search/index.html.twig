@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello SearchController!{% endblock %}
+
+{% block body %}
+    <div>
+        <div class="swiper relative">
+            <!-- Additional required wrapper -->
+            <div class="swiper-wrapper flex">
+                {% for i in 0..100 %}
+                    <div class="swiper-slide">
+                        <div class="bg-royal-blue w-8 h-8 rounded-full"></div>
+                    </div>
+                {% endfor %}
+        <!-- Slides -->
+{#        <div class="swiper-slide bg-royal-blue">Slide 1</div> #}
+                {#        <div class="swiper-slide bg-royal-blue">Slide 2</div> #}
+                {#        <div class="swiper-slide bg-royal-blue">Slide 3</div>#}
+            ...
+        </div>
+        <!-- If we need pagination -->
+        <div class="swiper-pagination bg-gray-500 w-6 h-6"></div>
+
+        <!-- If we need navigation buttons -->
+        <div class="swiper-button-prev bg-red-500 absolute left-10 h-10 aspect-square"></div>
+        <div class="swiper-button-next bg-red-500 absolute right-10 h-10 aspect-square"></div>
+
+        <!-- If we need scrollbar -->
+        <div class="swiper-scrollbar"></div>
+    </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,97 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ pageName }}{% endblock %}
+
+{% block body %}
+    {% include '_shared/_includes/navbar.html.twig' %}
+    <div class="flex flex-col font-poppins px-24 py-10">
+        <p class="text-4xl font-semibold">{{ pageName }}</p>
+        {{ form_start(form, {
+            'attr': {
+                'class': 'flex flex-col gap-2 pt-5 pl-5'
+            }
+        }) }}
+        {{ form_row(form.title, {
+            'row_attr': {
+                'class': 'flex flex-col gap-2'
+            },
+            'label_attr': {
+                'class': 'text-royal-blue'
+            },
+            'attr': {
+                'class': 'border rounded px-3 py-2 mb-5 border-gray-300'
+            }
+        }) }}
+        {{ form_row(form.category, {
+            'row_attr': {
+                'class': 'flex flex-col gap-2'
+            },
+            'label_attr': {
+                'class': 'text-royal-blue'
+            },
+            'attr': {
+                'class': 'border rounded px-3 py-2 mb-5 border-gray-300'
+            },
+            'choice_attr': {
+                'class': 'bg-black'
+            }
+        }) }}
+        {{ form_row(form.description, {
+            'row_attr': {
+                'class': 'flex flex-col gap-2'
+            },
+            'label_attr': {
+                'class': 'text-royal-blue'
+            },
+            'attr': {
+                'autocorrect': "off",
+                'class': 'border rounded px-3 py-2 mb-5 border-gray-300 whitespace-pre-wrap'
+            }
+        }) }}
+        {{ form_row(form.body, {
+            'row_attr': {
+                'class': 'flex flex-col gap-2'
+            },
+            'label_attr': {
+                'class': 'text-royal-blue'
+            },
+            'attr': {
+                'autocorrect': "off",
+                'class': 'border rounded px-3 py-2 mb-5 border-gray-300'
+            }
+        }) }}
+        <div class="flex flex-col">
+            {{ form_row(form.imagePath, {
+                'row_attr': {
+                    'class': 'flex flex-col gap-2'
+                },
+                'label_attr': {
+                    'class': 'text-royal-blue'
+                },
+                'attr': {
+                    'class': 'file-upload rounded px-3 py-2 mb-5'
+                }
+            }) }}
+            <div class="image-container hidden">
+                <div class="flex flex-col items-center">
+                    <div class="w-48 h-48">
+                        <img class="image-preview" src="" alt=""/>
+                    </div>
+                    <button id="removeImage" type="button" class="w-min px-3 py-2 rounded shadow bg-red-500 text-white">
+                        Remove
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="flex justify-end">
+            <button type="submit" class="px-6 py-2 mb-5 rounded bg-royal-blue text-white">
+                {% if pageName == 'Create Post' %}
+                    Create
+                {% else %}
+                    Edit
+                {% endif %}
+            </button>
+        </div>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

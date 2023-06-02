@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Welcome{% endblock %}
+
+{% block body %}
+    <div class="flex flex-col h-screen w-screen font-poppins">
+        {% include 'home/_includes/navbar.html.twig' %}
+        <div class="flex h-full w-full">
+            <div class="flex basis-1/2 justify-center items-center">
+                <div class="mx-24">
+                    <p class="font-semibold text-8xl mb-10">Multi Author Blog</p>
+                    <p class="text-xl mb-10">Share your thoughts, insights, and stories on various topics. Find
+                        inspiration, education, or
+                        entertainment and join the conversation. Discover new ideas, perspectives, and possibilities
+                        here.</p>
+                    <button class="px-8 py-3 bg-royal-blue text-white rounded hover:bg-royal-blue-300">Get started</button>
+                </div>
+            </div>
+            <div class="flex w-1/2 justify-center items-center">
+                <img src="{{ asset('build/images/frontpage.23aa8436.svg') }}" alt="blog" class="w-3/4"/>
+            </div>
+        </div>
+    </div>
+{% endblock %}
